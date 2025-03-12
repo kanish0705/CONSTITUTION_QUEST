@@ -3,14 +3,12 @@ workflows:
     name: Android Build
     max_build_duration: 60
     environment:
-      image: ubuntu-latest
+      image: android:2023.10.1
       java: 17
     scripts:
-      - name: Grant Gradle permissions
-        script: |
-          chmod +x ./gradlew
-      - name: Build APK
-        script: |
-          ./gradlew assembleDebug
+      - name: Set Gradle permissions
+        script: chmod +x ./gradlew
+      - name: Build Debug APK
+        script: ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/apk/debug/app-debug.apk
